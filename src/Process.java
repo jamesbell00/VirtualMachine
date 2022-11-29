@@ -1,55 +1,56 @@
 import slu.rvm.EProcessState;
+import slu.rvm.IAddressSpace;
 import slu.rvm.IProcess;
 import slu.rvm.IProcessControlBlock;
 
 public class Process implements IProcess {
 
+    int id;
+    String name;
+    EProcessState state;
+    IAddressSpace addressSpace;
+    IProcessControlBlock pcb;
+
+    // does this need a constructor? probably
+
     @Override
     public int getBaseAddress() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.addressSpace.getBaseAddress();
     }
 
     @Override
     public int getID() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.id;
     }
 
     @Override
     public int getLimitAddress() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.addressSpace.getLimitAddress();
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.name;
     }
 
     @Override
     public IProcessControlBlock getPCB() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.pcb;
     }
 
     @Override
     public EProcessState getState() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.state;
     }
 
     @Override
-    public void setPCB(IProcessControlBlock arg0) {
-        // TODO Auto-generated method stub
-        
+    public void setPCB(IProcessControlBlock pcb) {
+        this.pcb = pcb;
     }
 
     @Override
-    public void setState(EProcessState arg0) {
-        // TODO Auto-generated method stub
-        
+    public void setState(EProcessState state) {
+        this.state = state;
     }
     
 }
