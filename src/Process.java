@@ -5,13 +5,19 @@ import slu.rvm.IProcessControlBlock;
 
 public class Process implements IProcess {
 
-    int id;
-    String name;
-    EProcessState state;
-    IAddressSpace addressSpace;
-    IProcessControlBlock pcb;
+    private int id;
+    private String name;
+    private EProcessState state;
+    private IAddressSpace addressSpace;
+    private IProcessControlBlock pcb;
 
-    // does this need a constructor? probably
+    public Process(int id, String name, EProcessState state, IAddressSpace addressSpace, IProcessControlBlock pcb) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
+        this.addressSpace = addressSpace;
+        this.pcb = pcb;
+    }
 
     @Override
     public int getBaseAddress() {
@@ -44,13 +50,13 @@ public class Process implements IProcess {
     }
 
     @Override
-    public void setPCB(IProcessControlBlock pcb) {
-        this.pcb = pcb;
+    public void setPCB(IProcessControlBlock pcbNew) {
+        this.pcb = pcbNew;
     }
 
     @Override
-    public void setState(EProcessState state) {
-        this.state = state;
+    public void setState(EProcessState stateNew) {
+        this.state = stateNew;
     }
-    
+
 }

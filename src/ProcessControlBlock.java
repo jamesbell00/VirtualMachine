@@ -2,17 +2,24 @@ import slu.rvm.IProcessControlBlock;
 
 public class ProcessControlBlock implements IProcessControlBlock {
 
-    int pc;
-    int[] registers;
+    private int[] registers;
+    private int pc;
+
+    public ProcessControlBlock(int[] registers, int pc) {
+        this.registers = registers;
+        this.pc = pc;
+    }
 
     @Override
     public int getPC() {
-        return pc;
+
+        return this.pc;
     }
 
     @Override
     public int[] getRegisters() {
-        return registers;
+
+        return this.registers;
     }
-    
+
 }
