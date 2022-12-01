@@ -1,62 +1,51 @@
-import slu.rvm.EProcessState;
-import slu.rvm.IAddressSpace;
-import slu.rvm.IProcess;
-import slu.rvm.IProcessControlBlock;
+import slu.rvm.*;
 
 public class Process implements IProcess {
+	private int id;
+	private String name;
+	private EProcessState state;
+	private IAddressSpace addressSpace;
+	private IProcessControlBlock pcb;
+		
+	public Process(int id, String name, IAddressSpace addressSpace) {
+		this.id = id;
+		this.name = name;
+		this.state = EProcessState.NEW;
+		this.addressSpace = addressSpace;
+		this.pcb = new ProcessControlBlock(new int[CentralProcessingUnit.REGISTERS], this.addressSpace.getBaseAddress());
+	}
+	
+	public int getID() {
+		return this.id;
+	}
 
-    private int id;
-    private String name;
-    private EProcessState state;
-    private IAddressSpace addressSpace;
-    private IProcessControlBlock pcb;
+	public String getName() {
+		return this.name;
+	}
 
-    public Process(int id, String name, EProcessState state, IAddressSpace addressSpace, IProcessControlBlock pcb) {
-        this.id = id;
-        this.name = name;
-        this.state = state;
-        this.addressSpace = addressSpace;
-        this.pcb = pcb;
-    }
+	public EProcessState getState() {
+		return this.state;
+	}
+	
+	public void setState(EProcessState state) {
+		this.state = state;
+	}
+	
+	public IProcessControlBlock getPCB() {
+		return this.pcb;
+	}
 
-    @Override
-    public int getBaseAddress() {
-        return this.addressSpace.getBaseAddress();
-    }
+	public void setPCB(IProcessControlBlock pcb) {
+		this.pcb = pcb;
+	}
+	
+	public int getBaseAddress() {
+		return this.addressSpace.getBaseAddress();
+	}
 
-    @Override
-    public int getID() {
-        return this.id;
-    }
-
-    @Override
-    public int getLimitAddress() {
-        return this.addressSpace.getLimitAddress();
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public IProcessControlBlock getPCB() {
-        return this.pcb;
-    }
-
-    @Override
-    public EProcessState getState() {
-        return this.state;
-    }
-
-    @Override
-    public void setPCB(IProcessControlBlock pcbNew) {
-        this.pcb = pcbNew;
-    }
-
-    @Override
-    public void setState(EProcessState stateNew) {
-        this.state = stateNew;
-    }
-
+	public int getLimitAddress() {
+		return this.addressSpace.getLimitAddress();
+	}
 }
+
+

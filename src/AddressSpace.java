@@ -5,9 +5,9 @@ public class AddressSpace implements IAddressSpace {
     private int baseAddress;
     private int limitAdress;
 
-    public AddressSpace(int baseAddress, int limitAddress) {
+    public AddressSpace(int baseAddress, int size) {
         this.baseAddress = baseAddress;
-        this.limitAdress = limitAddress;
+        this.limitAdress = baseAddress + (size-1);
     }
 
     @Override
