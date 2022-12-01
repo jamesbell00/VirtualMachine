@@ -48,6 +48,8 @@ public class VirtualMachine implements IVirtualMachine {
 		this.processTable = new Process[MAX_PROCESSES];
 		this.currentMemoryBaseAddress = MEMORY_BASE_ADDRESS;
 		this.maxProcesses = -1;
+        
+        // if multi-core, logFile should be array
 		this.logFile = new PrintWriter(new File(name + ".txt"));
 		this.core = new CentralProcessingUnit(this.logFile, quantum);
 	}
