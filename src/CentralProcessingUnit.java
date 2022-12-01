@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 import slu.rvm.EProcessState;
 import slu.rvm.ICentralProcessingUnit;
 import slu.rvm.IProcess;
@@ -5,6 +7,9 @@ import slu.rvm.IProcess;
 public class CentralProcessingUnit implements ICentralProcessingUnit{
 
     public static final int REGISTERS = 0;
+
+    public CentralProcessingUnit(PrintWriter logFile, int quantum) {
+    }
 
     @Override
     public void dump() {
