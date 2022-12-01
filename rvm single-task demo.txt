@@ -1,0 +1,179 @@
+Program fibonacci(12)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+0x09 nop                      
+0x0A nop                      
+0x0B nop                      
+
+Executing process fibonacci(12), state is NEW, page size 16, address space 0x00 to 0x0F
+
+
+fibonacci(12) state is TERMINATED, output is 0
+
+Program summation(5)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+
+Executing process summation(5), state is NEW, page size 16, address space 0x10 to 0x1F
+
+
+summation(5) state is TERMINATED, output is 0
+
+Program summation(5)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+
+Executing process summation(5), state is NEW, page size 16, address space 0x20 to 0x2F
+
+
+summation(5) state is TERMINATED, output is 0
+
+Program product(4, 5)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+0x09 nop                      
+
+Executing process product(4, 5), state is NEW, page size 16, address space 0x30 to 0x3F
+
+
+product(4, 5) state is TERMINATED, output is 0
+
+Program quotient(10,2)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+0x09 nop                      
+0x0A nop                      
+
+Executing process quotient(10,2), state is NEW, page size 16, address space 0x40 to 0x4F
+
+
+quotient(10,2) state is TERMINATED, output is 0
+
+Program quotient(9,2)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+0x09 nop                      
+0x0A nop                      
+
+Executing process quotient(9,2), state is NEW, page size 16, address space 0x50 to 0x5F
+
+
+quotient(9,2) state is TERMINATED, output is 0
+
+Program remainder(10,2)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+
+Executing process remainder(10,2), state is NEW, page size 16, address space 0x60 to 0x6F
+
+
+remainder(10,2) state is TERMINATED, output is 0
+
+Program remainder(9,2)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+
+Executing process remainder(9,2), state is NEW, page size 16, address space 0x70 to 0x7F
+
+
+remainder(9,2) state is TERMINATED, output is 0
+
+Program factorial(5)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+
+Executing process factorial(5), state is NEW, page size 16, address space 0x80 to 0x8F
+
+
+factorial(5) state is TERMINATED, output is 0
+
+Program power(2,8)
+
+0x00 nop                      
+0x01 nop                      
+0x02 nop                      
+0x03 nop                      
+0x04 nop                      
+0x05 nop                      
+0x06 nop                      
+0x07 nop                      
+0x08 nop                      
+0x09 nop                      
+
+Executing process power(2,8), state is NEW, page size 16, address space 0x90 to 0x9F
+
+
+power(2,8) state is TERMINATED, output is 0
+
