@@ -35,7 +35,7 @@ public class VirtualMachine implements IVirtualMachine {
 
 	private int maxProcesses;
 	private int currentMemoryBaseAddress;
-	private IProcess [] processTable;
+	private Process [] processTable;
 	private ICentralProcessingUnit core;
 	
 	private PrintWriter logFile;
@@ -48,8 +48,6 @@ public class VirtualMachine implements IVirtualMachine {
 		this.processTable = new Process[MAX_PROCESSES];
 		this.currentMemoryBaseAddress = MEMORY_BASE_ADDRESS;
 		this.maxProcesses = -1;
-        
-        // if multi-core, logFile should be array
 		this.logFile = new PrintWriter(new File(name + ".txt"));
 		this.core = new CentralProcessingUnit(this.logFile, quantum);
 	}
@@ -92,7 +90,8 @@ public class VirtualMachine implements IVirtualMachine {
         
     	// creates a new process in the process table, the process is defined by its id, name, state, virtual address space and process control block (PCB)
 		// the VM supports two page sizes (16 and 32 memory words), the page size is assigned using the Best-fit strategy
-		
+		System.out.println("Program size: "+program.size());
+		int programSize = program.size();
 		int pageSize = (program.size() < PAGE_SIZE_16) ? PAGE_SIZE_16 : PAGE_SIZE_32; 
 		
 		// check if there is free memory to allocate a new page
@@ -110,6 +109,8 @@ public class VirtualMachine implements IVirtualMachine {
 		this.maxProcesses++;
 
 		this.processTable[this.maxProcesses] = new Process(this.maxProcesses, name, new AddressSpace(this.currentMemoryBaseAddress, pageSize));
+		
+		this.processTable[this.maxProcesses].setProcessSize(programSize);
 		
 		// update the base memory address is increased in page size memory words
 		
@@ -155,18 +156,19 @@ public class VirtualMachine implements IVirtualMachine {
 			// start or resume process execution, run(process) returns the process state: TERMINATED or READY
 			// the process control block (PCB) is saved when state is READY, since the process needs more runs to terminate
 			
-			// ---------------------------------------------------------------------------------------------------------
-			
-			// this code assumes that the process terminates, it should check the process state (TERMINATED, READY) and save the PCB
-			
-			this.core.run(this.processTable[process]);
-			
-			this.processTable[process].setState(EProcessState.TERMINATED);
-			
-			// the program output is stored at memory address 0xFF (used for I/O)
-			
-			this.logFile.println("\n" + this.processTable[process].getName() + " state is " + this.processTable[process].getState() + ", output is " + this.core.getMemory(0xFF) + "\n");
-
+			if (this.core.run(this.processTable[process]) == EProcessState.TERMINATED) {
+					
+				this.processTable[process].setState(EProcessState.TERMINATED);
+				this.logFile.println("\n" + this.processTable[process].getName() + " state is " + this.processTable[process].getState() + ", output is " + this.core.getMemory(0xFF) + "\n");
+				
+			} else {
+				
+				this.processTable[process].setPCB(new ProcessControlBlock(this.core.getRegisters() , this.core.getPC()));
+				this.processTable[process].setState(EProcessState.READY);
+				
+				this.logFile.println("\n" + this.processTable[process].getName() + " state is " + this.processTable[process].getState() + "\n");
+			}	
+				
 			// to do:
 			//
 			// if the CPU returns EProcessState.TERMINATED set the process state to TERMINATED and print out the outcome stored at memory address 0xFF
@@ -194,5 +196,9 @@ public class VirtualMachine implements IVirtualMachine {
 	@Override
 	public void halt() {
 		this.logFile.close();
+	}
+
+	public Process [] getProcessTable(){
+		return this.processTable;
 	}
 }

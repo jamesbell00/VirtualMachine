@@ -6,6 +6,7 @@ public class Process implements IProcess {
 	private EProcessState state;
 	private IAddressSpace addressSpace;
 	private IProcessControlBlock pcb;
+	private int processSize;
 		
 	public Process(int id, String name, IAddressSpace addressSpace) {
 		this.id = id;
@@ -13,10 +14,15 @@ public class Process implements IProcess {
 		this.state = EProcessState.NEW;
 		this.addressSpace = addressSpace;
 		this.pcb = new ProcessControlBlock(new int[CentralProcessingUnit.REGISTERS], this.addressSpace.getBaseAddress());
+		this.processSize = 0;
 	}
 	
 	public int getID() {
 		return this.id;
+	}
+
+	public int getProcessSize(){
+		return this.processSize;
 	}
 
 	public String getName() {
@@ -45,6 +51,10 @@ public class Process implements IProcess {
 
 	public int getLimitAddress() {
 		return this.addressSpace.getLimitAddress();
+	}
+
+	public void setProcessSize(int size){
+		this.processSize = size;
 	}
 }
 
