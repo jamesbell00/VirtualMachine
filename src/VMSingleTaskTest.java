@@ -33,6 +33,9 @@ public class VMSingleTaskTest {
 			IVirtualMachine virtualMachine = new VirtualMachine("rvm single-task demo");
 			
 			int process;
+
+			process = virtualMachine.load("multiply 3 to 5.txt", "multiply(3,5)");
+			virtualMachine.run(process);
 	
 			process = virtualMachine.load("VirtualMachine\\fibonacci 12.txt", "fibonacci(12)");
 			virtualMachine.run(process);
