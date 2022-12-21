@@ -155,15 +155,18 @@ public class VMSingleTaskTest {
 			int process8 = virtualMachine.load("VirtualMachine\\remainder 9 mod 2.txt", "remainder(9,2)");		
 			int process9 = virtualMachine.load("VirtualMachine\\factorial 5.txt", "factorial(5)");		
 			int process10 = virtualMachine.load("VirtualMachine\\power 2 pow 8.txt", "power(2,8)");		
+			int process11 = virtualMachine.load("VirtualMachine\\multiply 3 to 5.txt", "multiply(3,5)");		
+			int process12 = virtualMachine.load("VirtualMachine\\modulus_10_mod_2.txt", "modulus");		
 			
 			Process [] processTable = virtualMachine.getProcessTable();
 			Map<Integer, List<Integer>> priority = new HashMap<>();
 			System.out.println(processTable[0].getID());
 			List<Integer> processIndexes;
+			// the bound of this for loop must match the amount of processes to be run
 			// these bounds are tricky because the process table length is always 12 
 			// this adds the indexes to the value of the corresponding time bracket map, this is so that we do not have to create a new list as the value
 			// each time we add a key value pair
-			for(int i = 0; i < 10; i++){
+			for(int i = 0; i < 12; i++){
 				int currentProcessSize = processTable[i].getProcessSize();
 				
 				if(priority.containsKey(currentProcessSize)){
